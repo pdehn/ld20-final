@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<title>It's dangerous to take this, go alone.</title>
+<script src='lib/prototype.js' type='text/javascript'></script>
+<script src='lib/Three.js' type='text/javascript'></script>
+<script src='lib/RequestAnimationFrame.js' type='text/javascript'></script>
+<script src='lib/jsQuad.js' type='text/javascript'></script>
+<script src='lib/soundmanager2-jsmin.js' type='text/javascript'></script>
+<script src='engine.js' type='text/javascript'></script>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<style>
+	html, body {
+		font-family: 'Ubuntu', arial, serif;/**/
+		color:#fff;
+		padding:0;
+		margin:0;
+		height:100%;
+	}
+	.stat {
+		width: 20%;
+		float:left;
+	}
+	#stats {
+		height:20px;
+	}
+	#helper {
+		vertical-align:middle;
+		font-size:14px;
+	}
+	#helper img {
+		height:28px;
+	}
+	#overlay {
+		position:fixed;
+		top:0;
+		left:0;
+		display:block;
+		width:90%;
+		height:90%;
+	}
+	#play, #gameover, #load {
+		margin:auto;
+		width:40%;
+		text-align:center;
+		background:#000;
+		background:rgba(0,0,0,0.8);
+	}
+	#play, #gameover {
+		display:none;
+	}
+	
+	.playbtn {
+		border:1px solid #fff;
+		background:#000;
+		padding:10px;
+		color:#fff;
+		text-decoration:none;
+	}
+	#display {
+		background-image: url('img/stars1.png');
+	}
+</style>
+</head>
+<body style='background:#000'>
+<div id='content' style='height:95%'>
+	<div id='stats'>
+		<div class='stat'>Health: <span id='health'>0</span> %</div>
+		<div class='stat'>Money: $<span id='money'>0</span></div>
+		<div class='stat'>Score: <span id='score'>0</span> points</div>
+	</div>
+	<div id='display'></div>
+	<div id='helper'>
+		<img src='img/up.png'><img src='img/down.png'><img src='img/left.png'><img src='img/right.png'>Thrust/Turn
+		<img src='img/z.png'>Fire gun
+		<img src='img/x.png'>Deploy gravity wells [$50]
+		<img src='img/a.png'>60sec gun upgrade (stacks) [$200]
+		<img src='img/s.png'>10% health repair [$120]
+	</div>
+</div>
+<div id='overlay'>
+	<div id='load'>
+		<h1>Loading assets</h1>
+	</div>
+	<div id='play'>
+		<h1>It's dangerous to take this, go alone.</h1>
+		<p>Deliver as many harmless spinning boxes as you can. Try not to get killed, they don't seem to like you delivering those boxes.</p>
+		<p>Follow the cursor under your ship to your next package, pick it up by simply flying over it. Drop it off by following the cursor again and flying over that destination</p>
+		<p>Deliver packages to earn money (and improve your score), buy upgrades to better handle increasingly difficult enemies</p>
+		<p>Vanquish foes to earn points</p>
+		<a href='#' id='fplay' class='playbtn'>Play</a>
+	</div>
+	<div id='gameover'>
+		<h1>You have died.</h1>
+		<h2>Final Score: <span id='fscore'>0</span></h2>
+		<p>
+			You made $<span id='fcash'>0</span>,
+			delivered <span id='fdeliver'>0</span> harmless packages,
+			and mercilessly slaughtered <span id='fkill'>0</span> foes before they finally ended you.
+		</p>
+		<a href='#' id='rplay' class='playbtn'>Play Again</a>
+	</div>
+</div>
+
+</body>
+</html>
